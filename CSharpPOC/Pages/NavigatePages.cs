@@ -31,6 +31,10 @@ namespace CSharpPOC.Pages
         string txtMonthlyUpdate => "text=Monthly Update Process";
         string txtSetup => "text=SETUP";
         string txtManageUsers => "text=Manage Users";
+        string txtCECLSetup => ":nth-match(:text(\'CECL\'), 2)";
+        string txtInstNameDropDn => "text=Ovation Bank";
+        string txtAbout => "text=About";
+
 
         //Methods
 
@@ -92,5 +96,9 @@ namespace CSharpPOC.Pages
         public async Task ClickMonthyUpdate() => await Page.ClickAsync(txtMonthlyUpdate);
         public async Task ClickSetup() => await Page.ClickAsync(txtSetup);
         public async Task ClickManageUsers() => await Page.ClickAsync(txtManageUsers);
+        public async Task ClickSetupCECL() => await Page.ClickAsync(txtCECLSetup);
+        public async Task ClickInstDropDown() => await Page.ClickAsync(txtInstNameDropDn);
+        public async Task ClickAbout() => await Page.ClickAsync(txtAbout);
+
     }
 }
