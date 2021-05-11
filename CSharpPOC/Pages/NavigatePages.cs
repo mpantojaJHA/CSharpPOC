@@ -33,7 +33,7 @@ namespace CSharpPOC.Pages
         string txtManageUsers => "text=Manage Users";
         string txtCECLSetup => ":nth-match(:text(\'CECL\'), 2)";
         string txtInstNameDropDn => "text=Ovation Bank";
-        string txtAbout => "text=About";
+       string txtAbout => "text=About";
 
 
         //Methods
@@ -71,6 +71,8 @@ namespace CSharpPOC.Pages
 
                 case "Setup":
                     return await Page.QuerySelectorAsync(txtManageUsers).Result.GetInnerTextAsync();
+                case "About":
+                    return await Page.QuerySelectorAsync(txtAbout).Result.GetInnerTextAsync();
                 default:
                     return await Page.QuerySelectorAsync("No Domain found").Result.GetInnerTextAsync();
             }
@@ -98,7 +100,7 @@ namespace CSharpPOC.Pages
         public async Task ClickManageUsers() => await Page.ClickAsync(txtManageUsers);
         public async Task ClickSetupCECL() => await Page.ClickAsync(txtCECLSetup);
         public async Task ClickInstDropDown() => await Page.ClickAsync(txtInstNameDropDn);
-        public async Task ClickAbout() => await Page.ClickAsync(txtAbout);
+       public async Task ClickAbout() => await Page.ClickAsync(txtAbout);
 
     }
 }
