@@ -14,8 +14,7 @@ namespace CSharpPOC.Steps
     class SetupAboutSteps
     {
         Context Context;
-        Context Context2;
-
+        
         About aboutPg = null;
         NavigatePages navigate = null;
 
@@ -29,19 +28,17 @@ namespace CSharpPOC.Steps
         }
 
 
-
-
         [Given(@"I click the Institution Name Drop Down")]
         public async Task GivenIClickTheInstitutionNameDropDown()
         {
             await navigate.ClickInstDropDown();
-           // await aboutPg.ClickInstDropDown();
+           
         }
 
         [When(@"I click the About link")]
         public async Task WhenIClickTheAboutLink()
         {
-            //   await aboutPg.ClickAbout();
+          
             await navigate.ClickAbout();
         }
 
@@ -49,14 +46,12 @@ namespace CSharpPOC.Steps
         public async Task ThenIAmNavigatedToTheAboutPage()
         {
            Assert.That(await navigate.DoesPageExist("About"), Is.EqualTo("About"));
-           //const titleText = await 
-        
+                 
         }
 
         [Then(@"I verify the Application Name")]
         public async Task  ThenIVeifyTheApplicationName()
         {
-            // Click text=ProfitStars Financial Performance Suite
             Assert.That(await aboutPg.DoesElementExist("ProfitStars Financial Performance Suite"), Is.EqualTo("ProfitStars Financial Performance Suite"));
 
         }
@@ -77,19 +72,25 @@ namespace CSharpPOC.Steps
         public async Task ThenIVerifyATradmarkNoticeLinkExists()
         {
             Assert.That(await aboutPg.DoesElementExist("Trademark"), Is.EqualTo("Trademark Notice"));
+
+            await aboutPg.ClickTrademark();
+        
         }
 
         [Then(@"I verify a Terms and Conditions link exists")]
         public  async Task ThenIVerifyATermsAndConditionsLinkExists()
         {
             Assert.That(await aboutPg.DoesElementExist("Terms"), Is.EqualTo("Terms & Conditions"));
+
+            await aboutPg.ClickTerms();
         }
 
         [Then(@"I verify a Privacy Policy link exists")]
         public async Task ThenIVerifyAPrivacyPolicyLinkExists()
         {
             Assert.That(await aboutPg.DoesElementExist("Privacy"), Is.EqualTo("Privacy Policy"));
-            
+
+            await aboutPg.ClickPrivacy();
 
         }
 
