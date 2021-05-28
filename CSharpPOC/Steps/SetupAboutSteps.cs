@@ -62,11 +62,14 @@ namespace CSharpPOC.Steps
             Assert.That(await aboutPg.DoesElementExist("Copyright"), Is.EqualTo("Copyright © 2021 ProfitStars ®"));
         }
 
-        [Then(@"I verify a build number exists")]
+       [Then(@"I verify a build number exists")]
         public async Task  ThenIVerifyABuildNumberExists()
         {
             Assert.That(await aboutPg.DoesElementExist("Build"), Is.AtLeast("Version FPS-DevNightlyAngular-PL_"));
+
         }
+
+
 
         [Then(@"I verify a Tradmark Notice link exists")]
         public async Task ThenIVerifyATradmarkNoticeLinkExists()

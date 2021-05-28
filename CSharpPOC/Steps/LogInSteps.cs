@@ -31,12 +31,20 @@ namespace CSharpPOC.Steps
             await Context.Page.GoToAsync("https://qafour.profitstarsfps.com");
         }
 
-        [Given(@"And I enter username and password")]
+        
+        [Given(@"And I enter Username and Password")]
         public async Task GivenAndIEnterUsernameAndPassword(Table table)
         {
-            dynamic data = table.CreateDynamicInstance();
-            await login.LoginFPS(data.Username, data.Password);
+            //dynamic data = table.CreateDynamicInstance();
+            //await login.LoginFPS(data.Username, data.Password);
+            foreach(TableRow row in table.Rows)
+            {
+                await login.LoginFPS(row[0], row[1]);
+
+            }
+
         }
+
 
         [When(@"I click Login")]
         public async Task WhenIClickLogin()

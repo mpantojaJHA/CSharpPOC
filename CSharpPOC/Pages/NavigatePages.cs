@@ -27,6 +27,7 @@ namespace CSharpPOC.Pages
         string txtScorecard => "text=SCORECARD";
         string txtReporting => "text=REPORTING";
         string txtCreateReports => "text=Create Reports";
+        string txtAdHocReporting => "text=Ad-Hoc Reporting";
         string txtUpdateETL => "text=UPDATE";
         string txtMonthlyUpdate => "text=Monthly Update Process";
         string txtSetup => "text=SETUP";
@@ -94,6 +95,7 @@ namespace CSharpPOC.Pages
         public async Task ClickScorecard() => await Page.ClickAsync(txtScorecard);
         public async Task ClickReporting() => await Page.ClickAsync(txtReporting);
         public async Task ClickCreateReports() => await Page.ClickAsync(txtCreateReports);
+        public async Task ClickAdHoc() => await Page.ClickAsync(txtAdHocReporting);
         public async Task ClickUpdate() => await Page.ClickAsync(txtUpdateETL);
         public async Task ClickMonthyUpdate() => await Page.ClickAsync(txtMonthlyUpdate);
         public async Task ClickSetup() => await Page.ClickAsync(txtSetup);

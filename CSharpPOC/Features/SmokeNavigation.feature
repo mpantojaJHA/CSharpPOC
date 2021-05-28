@@ -1,8 +1,8 @@
 ﻿Feature: SmokeNavigation
-	Simple calculator for adding two numbers
+	Navigate to Main pages in app
 Background: 
    Given I navigate to the environment FPS application
-	And And I enter username and password
+	And And I enter Username and Password
 		| Username  | Password |
 		| mpantoja | Kiara### |
 	When I click Login
