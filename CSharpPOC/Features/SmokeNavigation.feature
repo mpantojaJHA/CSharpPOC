@@ -50,6 +50,9 @@ Scenario: I can navigate to main menu pages
 	Then I click Setup
 	When I click submenu Manage Users
 	Then I am navigated to the Manage Users Page
+	Then I click Setup
+	When I click submenu CECL
+	Then I am navigated to Setup CECL
 	And I click the FPS Image 
 	Then am navigated to the Dashboard
 	

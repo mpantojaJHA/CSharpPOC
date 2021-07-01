@@ -6,6 +6,7 @@ using CSharpPOC.Pages;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using System;
 using System.Diagnostics;
 
 namespace CSharpPOC.Steps
@@ -13,8 +14,7 @@ namespace CSharpPOC.Steps
     [Binding]
    class ReportWriterSteps
     {
-        // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
-
+        
         Context Context;
        // LogIn login = null;
        // LogOff logOff = null;
@@ -41,13 +41,54 @@ namespace CSharpPOC.Steps
         public async Task ThenReportWriterIsSuccessfullyLaunched()
         {
             await reportWriter.ClickOpenRW();
-            Process currentProcess = Process.GetCurrentProcess();
+            //Process currentProcess = Process.GetCurrentProcess();
             Process[] localAll = Process.GetProcesses();
+           // Process[] localByName = Process.GetProcessesByName("FPSReportWriter");
             Process[] localByName = Process.GetProcessesByName("FPSReportWriter");
-           // Process localById = Process.GetProcessById(1234);
-           // Process[] remoteAll = Process.GetProcesses("myComputer"); ...
 
-            
+
+            int i = 0;
+            const int maxCounter = 50;
+
+            do
+            {
+
+                try
+                {
+
+
+                    if (localAll[i] == localByName[0])
+                    {
+                        Console.WriteLine(localAll[i]);
+                        localByName[0].CloseMainWindow();
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+
+                }
+
+
+                i++;
+
+
+            } while (i < maxCounter);
+
+           localByName[0].CloseMainWindow();
+
+            //(i < maxCounter && localByName[0] != null);
+
+            // Console.WriteLine(localByName[0].ToString());
+
+
+
+
 
 
         }

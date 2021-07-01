@@ -21,8 +21,8 @@ namespace CSharpPOC.Pages
 
         public async Task<string> IsLogOffExist()
         {
-            await Page.WaitForNavigationAsync("https://qafour.profitstarsfps.com/#/dashboard");
-            
+             await Page.WaitForNavigationAsync("https://qafour.profitstarsfps.com/#/dashboard");
+           // await Page.WaitForNavigationAsync();
             return await Page.QuerySelectorAsync(lnkInstName).Result.GetInnerTextAsync();
            
         }
