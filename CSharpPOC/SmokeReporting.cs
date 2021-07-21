@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PlaywrightSharp;
+using Microsoft.Playwright;
 using CSharpPOC.Pages;
 using CSharpPOC.Hooks;
 
@@ -20,18 +20,18 @@ namespace CSharpPOC
     [Test]
         public async Task DecileSummaryCPP()
         {
-            await Playwright.InstallAsync();
+            
             using var playwright = await Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.LaunchAsync(
-                headless: false,
-                slowMo: 500
-
-            );
+            await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = false,
+                SlowMo = 500,
+            });
             var context = await browser.NewContextAsync();
             //// Open new page
             var page = await context.NewPageAsync();
             
-            await page.GoToAsync("https://qafour.profitstarsfps.com");
+            await page.GotoAsync("https://qafour.profitstarsfps.com");
            // await login.LoginFPS("DMLTest12", "Kiara%%%");
 
             //// Click [placeholder="Enter User Name"]
@@ -47,12 +47,12 @@ namespace CSharpPOC
                page.WaitForNavigationAsync(/*"https://qafour.profitstarsfps.com/"*/),
                page.PressAsync("[aria-label=\"Password\"]", "Enter"));
             
-            await page.GoToAsync("https://qasp.profitstarsfps.com/#/home");
+            await page.GotoAsync("https://qasp.profitstarsfps.com/#/home");
 
 
 
             // Go to https://qafour.profitstarsfps.com/#/dashboard
-            await page.GoToAsync("https://qafour.profitstarsfps.com/#/dashboard");
+            await page.GotoAsync("https://qafour.profitstarsfps.com/#/dashboard");
             // Click text=REPORTING
             await page.ClickAsync("text=REPORTING");
             // Click text=Create Reports
@@ -111,26 +111,28 @@ namespace CSharpPOC
             //}
             //await login.LoginFPS("DMLTest12", "Kiara%%%");
 
-            
 
-                string baseNameFavRep = "AAA BB Fav ";
-            
+
+            string baseNameFavRep = "AAA BB Fav ";
+
             string dateappend = DateTime.Now.ToString();
-            string dateappend1 = dateappend.Replace("/" , "");
+            string dateappend1 = dateappend.Replace("/", "");
             string dateappend2 = dateappend1.Replace(":", "");
             string faveAppendName = baseNameFavRep + dateappend2;
 
-            await Playwright.InstallAsync();
-            using var playwright = await Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.LaunchAsync(
-                headless: false,
-                slowMo: 500
 
-            );
+            using var playwright = await Playwright.CreateAsync();
+            await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = false,
+                SlowMo = 500,
+
+            });
+        
             var context = await browser.NewContextAsync();
             //// Open new page
             var page = await context.NewPageAsync();
-            await page.GoToAsync("https://qafour.profitstarsfps.com");
+            await page.GotoAsync("https://qafour.profitstarsfps.com");
             
 
             //// Click [placeholder="Enter User Name"]
@@ -147,9 +149,9 @@ namespace CSharpPOC
                page.WaitForNavigationAsync(/*"https://qafour.profitstarsfps.com/"*/),
                page.PressAsync("[aria-label=\"Password\"]", "Enter"));
             
-            await page.GoToAsync("https://qafour.profitstarsfps.com/#/home");
+            await page.GotoAsync("https://qafour.profitstarsfps.com/#/home");
 
-            await page.GoToAsync("https://qafour.profitstarsfps.com/#/dashboard");
+            await page.GotoAsync("https://qafour.profitstarsfps.com/#/dashboard");
             // Click text=REPORTING
             await page.ClickAsync("text=REPORTING");
             // Click text=Create Reports

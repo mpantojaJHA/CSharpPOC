@@ -1,4 +1,4 @@
-﻿using PlaywrightSharp;
+﻿using Microsoft.Playwright;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,9 +18,9 @@ namespace CSharpPOC.Base
     public class PlaywrightDriver
     {
         public IPage Page { get; set; }
-        public async Task<IPage> InitalizePlaywright(Browser browser, LaunchOptions launchOptions)
+        public async Task<IPage> InitalizePlaywright(Browser browser, BrowserTypeLaunchOptions launchOptions)
         {
-            await Playwright.InstallAsync();
+            //await Playwright.InstallAsync();
             var playwright = await Playwright.CreateAsync();
 
             IBrowser pBrowser = null;

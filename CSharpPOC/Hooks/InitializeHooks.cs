@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using PlaywrightSharp;
+using Microsoft.Playwright;
 using CSharpPOC.Base;
 using System;
 using System.Collections.Generic;
@@ -24,10 +24,10 @@ namespace CSharpPOC.Hooks
 
             PlaywrightDriver playwrightDriver = new PlaywrightDriver();
 
-            LaunchOptions launchOptions = new LaunchOptions()
+            BrowserTypeLaunchOptions launchOptions = new BrowserTypeLaunchOptions()
             {
                 Headless = false,
-                SlowMo = 500
+                SlowMo = 1000
             };
             Context.Page = await playwrightDriver.InitalizePlaywright(Base.Browser.Chromium, launchOptions);
           //  Context.Page = await playwrightDriver.InitalizePlaywright(Base.Browser.WebKit, launchOptions);

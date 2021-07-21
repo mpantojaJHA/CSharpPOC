@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using PlaywrightSharp;
 using CSharpPOC.Base;
 using CSharpPOC.Hooks;
 using CSharpPOC.Pages;

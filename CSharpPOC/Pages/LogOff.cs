@@ -1,4 +1,4 @@
-﻿using PlaywrightSharp;
+﻿using Microsoft.Playwright;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,13 +19,8 @@ namespace CSharpPOC.Pages
         public async Task ClickInstitutionName() => await Page.ClickAsync(lnkInstName);
         public async Task ClickSignOut() => await Page.ClickAsync(lnkLogOff);
 
-        public async Task<string> IsLogOffExist()
-        {
-             await Page.WaitForNavigationAsync("https://qafour.profitstarsfps.com/#/dashboard");
-           // await Page.WaitForNavigationAsync();
-            return await Page.QuerySelectorAsync(lnkInstName).Result.GetInnerTextAsync();
-           
-        }
+       
+
 
     }
 }

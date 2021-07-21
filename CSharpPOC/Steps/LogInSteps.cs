@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using PlaywrightSharp;
 using CSharpPOC.Base;
 using CSharpPOC.Hooks;
 using CSharpPOC.Pages;
@@ -15,20 +14,25 @@ namespace CSharpPOC.Steps
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
         Context Context;
+        
         LogIn login = null;
-        LogOff logOff = null;
+        NavigatePages navigate = null;
+
+       
         
         public LogInSteps(Context context)
         {
             Context = context;
+           
             login = new LogIn(Context.Page);
-            logOff = new LogOff(Context.Page);
+            navigate = new NavigatePages(Context.Page);
+            
                     }
 
         [Given(@"I navigate to the environment FPS application")]
         public async Task GivenINavigateToTheEnvironmentFPSApplication()
         {
-            await Context.Page.GoToAsync("https://qafour.profitstarsfps.com");
+            await Context.Page.GotoAsync("https://qafour.profitstarsfps.com");
         }
 
         
@@ -50,20 +54,27 @@ namespace CSharpPOC.Steps
         public async Task WhenIClickLogin()
         {
             await login.ClickLogin();
+           await Context.Page.WaitForSelectorAsync("#content > div.shuffle-animation.ng-scope > div.px-relative-position.ng-scope > div > div");
+
         }
         [Then(@"I am logged in to FPS")]
-        public async Task GivenIAmLoggedInToFPS()
-        {
+        public async Task GivenIAmLoggedInToFPS() {
 
-            Assert.That(await logOff.IsLogOffExist(), Is.EqualTo("Ovation Bank"));
+            Assert.That(await navigate.DoesDashbardExist(), Is.EqualTo(" Dashboard"));
+        }
+        [When(@"I log out")]
+        public async Task GivenIWillLogOut()
+        {
+            await login.ClickInstitutionName();
+            await login.ClickSignOut();
         }
 
-        [Then(@"I will Log Out")]
-        public async Task ThenIWillLogOut()
+        [Then(@"I will be logged out")]
+        public async Task ThenIWillBeLoggedOut()
         {
-            await logOff.ClickInstitutionName();
-            await logOff.ClickSignOut();
+            await Context.Page.GotoAsync("https://qafour.profitstarsfps.com/Account/SignedOut");
         }
+
 
     }
 

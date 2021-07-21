@@ -4,7 +4,7 @@ Background:
    Given I navigate to the environment FPS application
 	And And I enter Username and Password
 		| Username  | Password |
-		| mpantoja | Kiara### |
+		| mpantoja | Kiara$$$ |
 	When I click Login
 	Then I am logged in to FPS
 	
@@ -50,9 +50,13 @@ Scenario: I can navigate to main menu pages
 	Then I click Setup
 	When I click submenu Manage Users
 	Then I am navigated to the Manage Users Page
+	And I click the FPS Image
+	Then am navigated to the Dashboard
 	Then I click Setup
 	When I click submenu CECL
 	Then I am navigated to Setup CECL
 	And I click the FPS Image 
 	Then am navigated to the Dashboard
+	When I log out
+	Then I will be logged out
 	

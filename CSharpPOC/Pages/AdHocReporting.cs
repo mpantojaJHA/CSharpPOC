@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PlaywrightSharp;
+using Microsoft.Playwright;
 
 namespace CSharpPOC.Pages
 {
@@ -25,9 +25,9 @@ namespace CSharpPOC.Pages
             switch (txtelPage)
             {
                 case "Refresh":
-                    return await Page.QuerySelectorAsync("text=Refresh is in progress..").Result.GetInnerTextAsync();
+                    return await Page.QuerySelectorAsync("text=Refresh is in progress..").Result.InnerTextAsync();
                 default:
-                    return await Page.QuerySelectorAsync("No text found").Result.GetInnerTextAsync();
+                    return await Page.QuerySelectorAsync("No text found").Result.InnerTextAsync();
             }
 
         }

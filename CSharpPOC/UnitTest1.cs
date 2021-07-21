@@ -4,32 +4,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PlaywrightSharp;
+using Microsoft.Playwright;
 
 
 namespace CSharpPOC
 {
 
 
-    public class filterTests
+    public class FilterTests
         {
 
 
     [Test]
     public async Task FilterSmokeTest()
     {
-        await Playwright.InstallAsync();
+        
         using var playwright = await Playwright.CreateAsync();
-        await using var browser = await playwright.Chromium.LaunchAsync(
-            headless: false
-            );
-        var context = await browser.NewContextAsync();
+            await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = false,
+                SlowMo = 500,
+            });
+            var context = await browser.NewContextAsync();
 
         // Open new page
         var page = await context.NewPageAsync();
 
         
-        await page.GoToAsync("https:qafour.profitstarsfps.com");
+        await page.GotoAsync("https:qafour.profitstarsfps.com");
         // Click [placeholder="Enter User Name"]
         await page.ClickAsync("[placeholder=\"Enter User Name\"]");
 
@@ -40,7 +42,7 @@ namespace CSharpPOC
         await page.PressAsync("[placeholder=\"Enter User Name\"]", "Tab");
 
         // Fill [aria-label="Password"]
-        await page.FillAsync("[aria-label=\"Password\"]", "Kiara###");
+        await page.FillAsync("[aria-label=\"Password\"]", "Kiara$$$");
 
         // Press Enter
         await Task.WhenAll(
@@ -48,10 +50,10 @@ namespace CSharpPOC
             page.PressAsync("[aria-label=\"Password\"]", "Enter"));
 
             // Go to https://qafour.profitstarsfps.com/#/home
-            await page.GoToAsync("https://qafour.profitstarsfps.com/#/home");
+            await page.GotoAsync("https://qafour.profitstarsfps.com/#/home");
 
             // Go to https://qafour.profitstarsfps.com/#/dashboard
-            await page.GoToAsync("https://qafour.profitstarsfps.com/#/dashboard");
+            await page.GotoAsync("https://qafour.profitstarsfps.com/#/dashboard");
 
         // Click text=PROFITABILITY
         await Task.WhenAll(
@@ -136,10 +138,9 @@ namespace CSharpPOC
 
         // Click text=Sign Out
         await page.ClickAsync("text=Sign Out");
-            // Assert.Equal("https://profitstarsfpsdev.b2clogin.com/profitstarsfpsdev.onmicrosoft.com/oauth2/v2.0/logout?p=b2c_1_jha.signin&post_logout_redirect_uri=https%3A%2F%2Fqasp.profitstarsfps.com%2FLogOut", page.Url);
 
-            // Go to https://qafour.profitstarsfps.com/LogOut
-            await page.GoToAsync("https://qafour.profitstarsfps.com/LogOut");
+            // Go to https://qafour.profitstarsfps.com/Account/SignedOut
+            await page.GotoAsync("https://qafour.profitstarsfps.com/Account/SignedOut");
     }
 
 }

@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
-using PlaywrightSharp;
-using CSharpPOC.Base;
+﻿//using NUnit.Framework;
+//using PlaywrightSharp;
+//using CSharpPOC.Base;
 //using CSharpPOC.Hooks;
 //using CSharpPOC.Pages;
 //using System.Threading.Tasks;
@@ -9,7 +9,7 @@ using CSharpPOC.Base;
 
 //namespace CSharpPOC.Steps
 //{
-//    [Binding]    
+//    [Binding]
 //    class LogOffSteps
 //    {
 //        Context Context;
@@ -21,20 +21,22 @@ using CSharpPOC.Base;
 //            logOff = new LogOff(Context.Page);
 //        }
 
-//        [Given(@"I am logged in to FPS")]
-//        public async Task GivenIAmLoggedInToFPS()
+        
+       
+//        [Given(@"I will log out")]
+//        public async Task GivenIWillLogOut()
 //        {
-
-//            Assert.That(await logOff.IsLogOffExist(), Is.EqualTo("Ovation Bank"));
+//            await logOff.ClickInstitutionName();
+//                 await logOff.ClickSignOut();
 //        }
 
-//        [Then(@"I will Log Out")]
-//            public async Task ThenIWillLogOut()
-//            {
-//                await logOff.ClickInstitutionName();
-//                await logOff.ClickSignOut();
-//            }
-
+//        [Then(@"I will be logged out")]
+//        public async Task ThenIWillBeLoggedOut()
+//        {
+//            await Context.Page.GotoAsync("https://qafour.profitstarsfps.com/Account/SignedOut");
 //        }
+
+
+//    }
 
 //}

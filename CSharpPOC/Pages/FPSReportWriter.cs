@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PlaywrightSharp;
+using Microsoft.Playwright;
 using System.Diagnostics;
 
 namespace CSharpPOC.Pages

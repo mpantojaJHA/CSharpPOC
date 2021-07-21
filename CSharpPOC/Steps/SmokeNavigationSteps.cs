@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using PlaywrightSharp;
 using CSharpPOC.Base;
 using CSharpPOC.Hooks;
 using CSharpPOC.Pages;
@@ -13,23 +12,23 @@ namespace CSharpPOC.Steps
     class SmokeNavigationSteps
     {
         Context Context;
-        LogIn login = null;
-        LogOff logOff = null;
         NavigatePages navigate = null;
 
         public SmokeNavigationSteps(Context context)
         {
             Context = context;
-            login = new LogIn(Context.Page);
-            logOff = new LogOff(Context.Page);
             navigate = new NavigatePages(Context.Page);
+           
         }
 
         [Given(@"I am on the Dashboard")]
         public async Task GivenIAmOnTheDashboard()
         {
-            
+            //var content = await navigate.DoesDashbardExist();
+            // Assert.AreEqual("Dashboard",content);
             Assert.That(await navigate.DoesDashbardExist(), Is.EqualTo(" Dashboard"));
+            
+
         }
 
 
@@ -43,7 +42,7 @@ namespace CSharpPOC.Steps
         [Then(@"I am navigated to the Profitability page")]
         public async Task ThenIAmNavigatedToTheProfitabilityPage()
         {
-            Assert.That(await navigate.DoesPageExist("Profitability"), Is.EqualTo("Profitability"));
+            Assert.That(await navigate.DoesPageExist("Profitability"), Is.EqualTo("PROFITABILITY"));
             
         }
 
@@ -171,10 +170,11 @@ namespace CSharpPOC.Steps
         [Then(@"I am navigated to the Monthly Update Page")]
         public async Task ThenIAmNavigatedToTheMonthlyUpdatePage()
         {
+            
             Assert.That(await navigate.DoesPageExist("Update"), Is.EqualTo("Monthly Update Process"));
         }
 
-                [Then(@"I click Setup")]
+         [Then(@"I click Setup")]
         public async Task ThenIClickSetup()
         {
             await navigate.ClickSetup();
@@ -189,10 +189,25 @@ namespace CSharpPOC.Steps
         [Then(@"I am navigated to the Manage Users Page")]
         public async Task ThenIAmNavigatedToTheManageUsersPage()
         {
-            Assert.That(await navigate.DoesPageExist("Setup"), Is.EqualTo("Manage Users"));
+            Assert.That(await navigate.DoesPageExist("MgUsers"), Is.EqualTo("Manage Users"));
         }
 
-        
+        [When(@"I click submenu CECL")]
+        public async Task WhenIClickSubmenuCECL()
+        {
+           
+            await navigate.ClickSetupCECL();
+        }
+
+        [Then(@"I am navigated to Setup CECL")]
+        public async Task ThenIAmNavigatedToSetupCECL()
+        {
+                   
+           Assert.That(await navigate.DoesPageExist("SetupCECL"), Is.EqualTo("Setup CECL "));
+        }
+
+
+
 
     }
 }

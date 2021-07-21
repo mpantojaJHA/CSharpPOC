@@ -1,4 +1,4 @@
-﻿using PlaywrightSharp;
+﻿using Microsoft.Playwright;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +19,7 @@ namespace CSharpPOC.Pages
         string txtPricingSubmenu => "text=Pricing Rate Sheets >> a";
         string imgDashboard => "img";
         string txtDashboard => "text=Dashboard";
+        string dashboardSelector => "#content > div.shuffle-animation.ng-scope > div.px-relative-position.ng-scope > div > div";
         string txtForecasting => "text=FORECASTING";
         string txtForecastingDetail => "text=Detail";
         string txtALM => "text=ALM";
@@ -32,7 +33,8 @@ namespace CSharpPOC.Pages
         string txtMonthlyUpdate => "text=Monthly Update Process";
         string txtSetup => "text=SETUP";
         string txtManageUsers => "text=Manage Users";
-        string txtCECLSetup => ":nth-match(:text(\'CECL\'), 2)";
+        string txtCECLSetup => ":nth-match(:text(\"CECL\"), 2)";
+        string txtBrdCrmbSetupCECL => "text=Setup CECL";
         string txtInstNameDropDn => "text=Ovation Bank";
        string txtAbout => "text=About";
 
@@ -41,10 +43,10 @@ namespace CSharpPOC.Pages
 
         public async Task<string> DoesDashbardExist()
         {
-            
-                   
-            return await Page.QuerySelectorAsync(txtDashboard).Result.GetInnerTextAsync();
-         
+
+
+            return await Page.QuerySelectorAsync(txtDashboard).Result.InnerTextAsync();
+
         }
         public async Task<string> DoesPageExist(string txtPage)
         {
@@ -54,28 +56,32 @@ namespace CSharpPOC.Pages
             switch (txtDomainPage)
             {
                 case "Profitability":
-                    return await Page.QuerySelectorAsync("span:has-text('Profitability')").Result.GetInnerTextAsync();
+                    return await Page.QuerySelectorAsync(txtProfitability).Result.InnerTextAsync();
+                  ;
                 case "Pricing":
-                    return await Page.QuerySelectorAsync("span:has-text('Pricing')").Result.GetInnerTextAsync();
+                    return await Page.TextContentAsync("span:has-text('Pricing')");
                 case "Forecasting":
-                    return await Page.QuerySelectorAsync("text=Forecasting Detail").Result.GetInnerTextAsync();
+                    return await Page.TextContentAsync("text=Forecasting Detail");
                 case "ALM":
-                    return await Page.QuerySelectorAsync(txtEVE).Result.GetInnerTextAsync();
+                    return await Page.TextContentAsync(txtEVE);
                 case "CECL":
-                    return await Page.QuerySelectorAsync("text=CECL Summary").Result.GetInnerTextAsync();
+                    return await Page.TextContentAsync("text=CECL Summary");
                 case "Scorecard":
-                    return await Page.QuerySelectorAsync("span:has-text('Scorecard')").Result.GetInnerTextAsync();
+                    return await Page.TextContentAsync("span:has-text('Scorecard')");
                 case "Reporting":
-                    return await Page.QuerySelectorAsync(txtCreateReports).Result.GetInnerTextAsync();
+                    return await Page.TextContentAsync(txtCreateReports);
                 case "Update":
-                    return await Page.QuerySelectorAsync(txtMonthlyUpdate).Result.GetInnerTextAsync();
+                    return await Page.TextContentAsync(txtMonthlyUpdate);
 
-                case "Setup":
-                    return await Page.QuerySelectorAsync(txtManageUsers).Result.GetInnerTextAsync();
+                case "MgUsers":
+                    return await Page.TextContentAsync(txtManageUsers);
+                case "SetupCECL":
+                    return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtBrdCrmbSetupCECL).Result.InnerTextAsync();
+
                 case "About":
-                    return await Page.QuerySelectorAsync(txtAbout).Result.GetInnerTextAsync();
+                    return await Page.TextContentAsync(txtAbout);
                 default:
-                    return await Page.QuerySelectorAsync("No Domain found").Result.GetInnerTextAsync();
+                    return await Page.TextContentAsync("No Domain found");
             }
 
 

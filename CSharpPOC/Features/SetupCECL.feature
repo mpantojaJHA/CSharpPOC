@@ -67,6 +67,7 @@ Scenario: Verify Save and Cancel Appear when Navigate Away from CECL Credit Rati
 	 Then the Calendar drops down
 	 And the Current year of recent ETLs shows for Year
 	 And Only Months with Completed ETLs can be selected
+	 And I cannot select a month beyond or prior to the ETLd months
 	 When I click outside of the dropped down calendar
 	 Then the Calendar collapses up
 
@@ -118,3 +119,7 @@ Scenario: Verify Save and Cancel Appear when Navigate Away from CECL Credit Rati
 	 When I click Cancel in the dialog 
 	 Then the the ratings are Not Saved
 	 Then am navigated to the Dashboard
+
+	 @CECLRecoveryRates
+	Scenario: Verify CECL Recover Rates page
+	

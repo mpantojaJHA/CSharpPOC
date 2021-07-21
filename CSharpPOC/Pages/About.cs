@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using PlaywrightSharp;
+using Microsoft.Playwright;
 
 
 namespace CSharpPOC.Pages
@@ -30,21 +30,21 @@ namespace CSharpPOC.Pages
             switch (txtelementPage)
             {
                 case "ProfitStars Financial Performance Suite":
-                    return await Page.GetFrame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtAppName).Result.GetInnerTextAsync();
+                    return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtAppName).Result.InnerTextAsync();
                 case "Copyright":
-                     return await Page.GetFrame(name: "FpsAngularAppFrame").QuerySelectorAsync(cpyRighttxt).Result.GetInnerTextAsync();
+                     return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(cpyRighttxt).Result.InnerTextAsync();
                   
                 case "Build":
-                    return await Page.GetFrame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtBuildNbr).Result.GetInnerTextAsync();
+                    return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtBuildNbr).Result.InnerTextAsync();
                 case "Trademark":
-                    return await Page.GetFrame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtTrademark).Result.GetInnerTextAsync();
+                    return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtTrademark).Result.InnerTextAsync();
                 case "Terms":
-                    return await Page.GetFrame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtTerms).Result.GetInnerTextAsync();
+                    return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtTerms).Result.InnerTextAsync();
                 case "Privacy":
-                    return await Page.GetFrame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtPrivacy).Result.GetInnerTextAsync();
+                    return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtPrivacy).Result.InnerTextAsync();
                 
                 default:
-                    return await Page.QuerySelectorAsync("No Domain found").Result.GetInnerTextAsync();
+                    return await Page.QuerySelectorAsync("No Domain found").Result.InnerTextAsync();
             }
 
             
@@ -55,35 +55,37 @@ namespace CSharpPOC.Pages
 
         public async Task ClickTrademark ()
         {
-            var page1Task = Page.WaitForEventAsync(PageEvent.Popup);
-            await Task.WhenAll(
-            page1Task,
-           Page.GetFrame(name: "FpsAngularAppFrame").ClickAsync("text=Trademark Notice"));
+           // var page1Task = Page.WaitForEventAsync(PageEvent.Popup);
+           var page1Task = await Page.RunAndWaitForPopupAsync(async () =>
+           {
+               await Page.Frame("FpsAngularAppFrame").ClickAsync("text=Trademark Notice");
+           });
 
-            page1Task.Dispose();
+
+            await page1Task.CloseAsync();
 
         }
 
         public async Task ClickTerms()
         {
-            var page2Task = Page.WaitForEventAsync(PageEvent.Popup);
-            await Task.WhenAll(
-                 page2Task,
-                Page.GetFrame(name: "FpsAngularAppFrame").ClickAsync("text=Terms & Conditions"));
-            // Close page
-             page2Task.Dispose();
+            var page2Task = await Page.RunAndWaitForPopupAsync(async () =>
+            {
+                await Page.Frame("FpsAngularAppFrame").ClickAsync("text=Terms & Conditions");
+            });
+
+            await page2Task.CloseAsync();
 
 
         }
 
         public async Task ClickPrivacy()
         {
-            var page3Task = Page.WaitForEventAsync(PageEvent.Popup);
-            await Task.WhenAll(
-             page3Task,
-            Page.GetFrame(name: "FpsAngularAppFrame").ClickAsync("text=Privacy Policy"));
+            var page3Task = await Page.RunAndWaitForPopupAsync(async () =>
+            {
+                await Page.Frame("FpsAngularAppFrame").ClickAsync("text=Privacy Policy");
+            });
             // Close page
-            page3Task.Dispose();
+            await page3Task.CloseAsync();
 
 
         }

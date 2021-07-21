@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using PlaywrightSharp;
 using CSharpPOC.Base;
 using CSharpPOC.Hooks;
 using CSharpPOC.Pages;
@@ -41,46 +40,46 @@ namespace CSharpPOC.Steps
         public async Task ThenReportWriterIsSuccessfullyLaunched()
         {
             await reportWriter.ClickOpenRW();
-            //Process currentProcess = Process.GetCurrentProcess();
-            Process[] localAll = Process.GetProcesses();
+           
+           // Process[] localAll = Process.GetProcesses();
+          
            // Process[] localByName = Process.GetProcessesByName("FPSReportWriter");
-            Process[] localByName = Process.GetProcessesByName("FPSReportWriter");
 
 
-            int i = 0;
-            const int maxCounter = 50;
+           // int i = 0;
+           // const int maxCounter = 50;
 
-            do
-            {
+           // do
+           // {
 
-                try
-                {
-
-
-                    if (localAll[i] == localByName[0])
-                    {
-                        Console.WriteLine(localAll[i]);
-                        localByName[0].CloseMainWindow();
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-
-                }
+           //     try
+           //     {
 
 
-                i++;
+           //         if (localAll[i] == localByName[0])
+           //         {
+           //             Console.WriteLine(localAll[i]);
+           //             localByName[0].CloseMainWindow();
+           //             break;
+           //         }
+           //         else
+           //         {
+           //             continue;
+           //         }
+           //     }
+           //     catch (Exception e)
+           //     {
+           //         Console.WriteLine(e.Message);
+
+           //     }
 
 
-            } while (i < maxCounter);
+           //     i++;
 
-           localByName[0].CloseMainWindow();
+
+           // } while (i < maxCounter);
+
+           //localByName[0].CloseMainWindow();
 
             //(i < maxCounter && localByName[0] != null);
 
