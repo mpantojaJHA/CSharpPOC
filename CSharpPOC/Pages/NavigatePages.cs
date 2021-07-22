@@ -16,10 +16,9 @@ namespace CSharpPOC.Pages
         string txtProfitability => "text=PROFITABILITY";
         string txtRelationships => "txt=RELATIONSHIPS";
         string txtPricingMenu => "text=PRICING";
-        string txtPricingSubmenu => "text=Pricing Rate Sheets >> a";
+        string txtPricingSubmenu => "text=Pricing Rate Sheets >> a";  //depending on DOM load speed, may need to do new selector
         string imgDashboard => "img";
         string txtDashboard => "text=Dashboard";
-        string dashboardSelector => "#content > div.shuffle-animation.ng-scope > div.px-relative-position.ng-scope > div > div";
         string txtForecasting => "text=FORECASTING";
         string txtForecastingDetail => "text=Detail";
         string txtALM => "text=ALM";

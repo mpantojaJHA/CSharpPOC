@@ -54,7 +54,8 @@ namespace CSharpPOC.Steps
         public async Task WhenIClickLogin()
         {
             await login.ClickLogin();
-           await Context.Page.WaitForSelectorAsync("#content > div.shuffle-animation.ng-scope > div.px-relative-position.ng-scope > div > div");
+            await Context.Page.WaitForNavigationAsync();
+          // await Context.Page.WaitForSelectorAsync("#content > div.shuffle-animation.ng-scope > div.px-relative-position.ng-scope > div > div");
 
         }
         [Then(@"I am logged in to FPS")]
