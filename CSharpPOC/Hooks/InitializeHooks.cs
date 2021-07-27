@@ -27,7 +27,9 @@ namespace CSharpPOC.Hooks
             BrowserTypeLaunchOptions launchOptions = new BrowserTypeLaunchOptions()
             {
                 Headless = false,
-                SlowMo = 1000
+                SlowMo = 1000,
+               
+               
             };
             Context.Page = await playwrightDriver.InitalizePlaywright(Base.Browser.Chromium, launchOptions);
           //  Context.Page = await playwrightDriver.InitalizePlaywright(Base.Browser.WebKit, launchOptions);

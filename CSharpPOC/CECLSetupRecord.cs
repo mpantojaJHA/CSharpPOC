@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using Microsoft.Playwright;
 using System;
+using CSharpPOC.Pages;
+using CSharpPOC.Hooks;
 using System.Threading.Tasks;
 
 namespace CSharpPOC
@@ -10,10 +12,12 @@ namespace CSharpPOC
 
     class CECLSetupRecord
     {
+        
         [Test]
         public async Task NavigateToCECLRecorveryRates()
         {
             
+
             using var playwright = await Playwright.CreateAsync();
            
             await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
@@ -30,7 +34,7 @@ namespace CSharpPOC
             await page.ClickAsync("[placeholder=\"Enter User Name\"]");
             // Fill [placeholder="Enter User Name"]
             await page.FillAsync("[placeholder=\"Enter User Name\"]", "mpantoja");
-            // Press Tab
+                       // Press Tab
             await page.PressAsync("[placeholder=\"Enter User Name\"]", "Tab");
             // Fill [aria-label="Password"]
             await page.FillAsync("[aria-label=\"Password\"]", "Kiara$$$");

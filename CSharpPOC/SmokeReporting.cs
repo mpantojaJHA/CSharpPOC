@@ -41,7 +41,7 @@ namespace CSharpPOC
           //  Press Tab
           await page.PressAsync("[placeholder=\"Enter User Name\"]", "Tab");
             //// Fill [aria-label="Password"]
-            await page.FillAsync("[aria-label=\"Password\"]", "Kiara###");
+            await page.FillAsync("[aria-label=\"Password\"]", "Kiara$$$");
             //Press Enter
             await Task.WhenAll(
                page.WaitForNavigationAsync(/*"https://qafour.profitstarsfps.com/"*/),
@@ -142,7 +142,7 @@ namespace CSharpPOC
             //  Press Tab
             await page.PressAsync("[placeholder=\"Enter User Name\"]", "Tab");
             //// Fill [aria-label="Password"]
-            await page.FillAsync("[aria-label=\"Password\"]", "Kiara###" +
+            await page.FillAsync("[aria-label=\"Password\"]", "Kiara$$$" +
                 "");
             //Press Enter
             await Task.WhenAll(
@@ -209,7 +209,7 @@ namespace CSharpPOC
             
              //await page.ClickAsync("//*[@id='delete4']");
 
-            // await page.ClickAsync("//div[@id='SelectionPanelTreeview']//*[@id='delete3']");
+         // await page.ClickAsync("//div[@id='viewport']//div[@id='treeviewNode5']//span[@id='delete5']");
 
             //  < span id = "delete4" class="treeview-node-button fa fa-times" ng-style="{left: node.deleteButtonLeft, position: 'absolute'}" ng-click="vm.deleteNode($index)" ng-class="node.deleteButtonClass" style="left: 584px; position: absolute;">
             //          </span>
