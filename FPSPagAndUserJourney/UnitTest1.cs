@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Playwright;
 
 
-namespace CSharpPOC
+namespace FPSPagAndUserJourney
 {
 
 

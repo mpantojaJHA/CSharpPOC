@@ -4,18 +4,20 @@ using System.Threading.Tasks;
 using System.Configuration;
 using NUnit.Framework;
 using CSharpPOC.Hooks;
+using CSharpPOC.Base;
 
 
 
-namespace CSharpPOC
+
+namespace FPSPagAndUserJourney
 {
 
     
     public class SmokeTests
     {
-        Context testContextInstance;
+        //Context testContextInstance;
 
-        Context TestContext;
+        //Context TestContext;
 
 
 
@@ -147,9 +149,9 @@ namespace CSharpPOC
             await Task.WhenAll(
                 page.WaitForNavigationAsync(/*"https://qafour.profitstarsfps.com/#/scorecard?path=%5B2%5D&userSelection=%7B%2213%22:%220%5Cb%22,%2219%22:0,%2223%22:3%7D"*/),
                 page.ClickAsync("text=SCORECARD"));
-            NUnit.Framework.Assert.AreEqual("https://qafour.profitstarsfps.com/#/scorecard?path=%5B2%5D&userSelection=%7B%7D", page.Url);
-            await page.ClickAsync("text=Public");
-            NUnit.Framework.Assert.AreEqual("https://qafour.profitstarsfps.com/#/scorecard?path=%5B2%5D&userSelection=%7B%2213%22:%220%5Cb%22,%2219%22:1,%2223%22:3%7D", page.Url);
+            //NUnit.Framework.Assert.AreEqual("https://qafour.profitstarsfps.com/#/scorecard?path=%5B2%5D&userSelection=%7B%7D", page.Url);
+            //await page.ClickAsync("text=Public");
+            //NUnit.Framework.Assert.AreEqual("https://qafour.profitstarsfps.com/#/scorecard?path=%5B2%5D&userSelection=%7B%2213%22:%220%5Cb%22,%2219%22:1,%2223%22:3%7D", page.Url);
         }
 
         public async Task Submit()

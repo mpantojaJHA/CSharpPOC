@@ -1,15 +1,11 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Playwright;
-using CSharpPOC.Pages;
-using CSharpPOC.Hooks;
 
 
-namespace CSharpPOC
+
+namespace FPSPagAndUserJourney
 {
     class SmokeReporting
     {
