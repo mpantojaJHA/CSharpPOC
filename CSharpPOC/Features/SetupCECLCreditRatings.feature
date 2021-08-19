@@ -1,4 +1,4 @@
-﻿Feature: SetupCECL
+﻿Feature: SetupCECLCreditRatingCodes
 	In order to use CECL, I need to set up processing parameters
 
 Background: 
@@ -15,8 +15,8 @@ Scenario: Verify CECL Credit Rating Codes page
 	And I select the Setup CECL breadcrumb
 	And I choose Credit Rating Codes
 	And I am on the Credit Rating Page
-	When 1 is entered for Risk Rating Low
-	And 20 is entered for Risk Rating High
+	When 2 is entered for Risk Rating Low
+	And 25 is entered for Risk Rating High
 	And I click Save
 	Then the the ratings are Saved
 

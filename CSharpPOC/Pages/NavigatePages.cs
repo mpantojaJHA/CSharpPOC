@@ -36,7 +36,7 @@ namespace CSharpPOC.Pages
         string txtBrdCrmbSetupCECL => "text=Setup CECL";
         string txtInstNameDropDn => "text=Ovation Bank";
        string txtAbout => "text=About";
-
+       string txtCreditRatingCodes => "text=Credit Rating Codes";
 
         //Methods
 
@@ -79,6 +79,8 @@ namespace CSharpPOC.Pages
 
                 case "About":
                     return await Page.TextContentAsync(txtAbout);
+                case "Credit Rating Codes":
+                    return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtCreditRatingCodes).Result.InnerTextAsync();
                 default:
                     return await Page.TextContentAsync("No Domain found");
             }
@@ -109,5 +111,9 @@ namespace CSharpPOC.Pages
         public async Task ClickInstDropDown() => await Page.ClickAsync(txtInstNameDropDn);
        public async Task ClickAbout() => await Page.ClickAsync(txtAbout);
 
+        public async Task ClickBreadcrumb(string breadcrumbselector) => await Page.Frame(name: "FpsAngularAppFrame").ClickAsync(breadcrumbselector);
+        public async Task ClickBreadCrumbSubmenu(string brdCrmbselector) => await Page.Frame(name: "FpsAngularAppFrame").ClickAsync(brdCrmbselector);
+
+        
     }
 }

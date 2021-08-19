@@ -13,7 +13,7 @@ namespace CSharpPOC.Steps
     class SetupAboutSteps
     {
         Context Context;
-        
+
         About aboutPg = null;
         NavigatePages navigate = null;
 
