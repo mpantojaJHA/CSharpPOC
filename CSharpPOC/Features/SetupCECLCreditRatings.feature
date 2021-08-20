@@ -22,7 +22,10 @@ Scenario: Verify CECL Credit Rating Codes page
 
 @CECLCreditRatingCodes
 Scenario: Verify Cancel Does Not Save Rating Codes
-	Given I am on the Credit Rating Page
+	Given I have have at least one completed ETL and have navigated to Setup CECL
+	And I select the Setup CECL breadcrumb
+	And I choose Credit Rating Codes
+	And I am on the Credit Rating Page
 	When 5 is entered for Risk Rating Low
 	And 15 is entered for Risk Rating High
 	And I click Cancel
@@ -30,11 +33,14 @@ Scenario: Verify Cancel Does Not Save Rating Codes
 
 @CECLCreditRatingCodes
 Scenario: Verify Inline Validations on CECL Credit Rating Codes page
-	Given I am on the Credit Rating Page
+	Given I have have at least one completed ETL and have navigated to Setup CECL
+	And I select the Setup CECL breadcrumb
+	And I choose Credit Rating Codes
+	And I am on the Credit Rating Page
 	When 0 is entered for Risk Rating Low
 	And 101 is entered for Risk Rating High
-	Then a Validation appears below Risk Rating Low input box that says "The value should be between 1 and 100."
-	And a Validation appears below Risk Rating High input box that says "The value should be between 1 and 100."
+	Then a Validation appears below Risk Rating Low input box that says "The value must be between 1 and 100."
+	And a Validation appears below Risk Rating High input box that says "The value must be between 1 and 100."
 	
 @CECLCreditRatingCodes
 Scenario: Verify Save and Cancel Appear when Navigate Away from CECL Credit Rating Codes page with Changes

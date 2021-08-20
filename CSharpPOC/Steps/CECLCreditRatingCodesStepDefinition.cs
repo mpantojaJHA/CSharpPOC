@@ -4,6 +4,7 @@ using CSharpPOC.Hooks;
 using CSharpPOC.Pages;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
+using Microsoft.Playwright;
 using TechTalk.SpecFlow.Assist;
 
 namespace CSharpPOC.Steps
@@ -23,7 +24,7 @@ namespace CSharpPOC.Steps
         {
             Context = context;
 
-
+            
             page = new CECLCreditRatingCodes(Context.Page);
             navigate = new NavigatePages(Context.Page);
         }
@@ -79,37 +80,57 @@ namespace CSharpPOC.Steps
         [Then(@"the the ratings are Saved")]
         public async Task ThenTheTheRatingsAreSaved()
         {
-
             //here we will check that the values are there and then set back
             
+            var lowValue = await page.GetTextValuesLow();
+            StringAssert.Contains("2", lowValue);
+            
+            var highValue = await page.GetTextValuesHigh();
+            StringAssert.Contains("25", highValue);
 
             //set back to default
             await page.FillRiskRatingLow(defaultLow);
             await page.FillRiskRatingHigh(defaultHigh);
+            await page.ClickCredCodeSave();
         }
 
         [When(@"I click Cancel")]
-        public void WhenIClickCancel()
+        public async Task WhenIClickCancel()
         {
-            ScenarioContext.Current.Pending();
+            //need to make some changes so this occurs so we will pass in a couple values to cause a change
+            //
+            string lowValue = "5";
+            string highValue = "99";
+            await page.FillRiskRatingLow(lowValue);
+            await page.FillRiskRatingHigh(highValue);
+            ////click cancel
+            await page.ClickCredCodeCancel();
         }
 
         [Then(@"the the ratings are not Saved")]
-        public void ThenTheTheRatingsAreNotSaved()
+        public async Task ThenTheTheRatingsAreNotSaved()
         {
-            ScenarioContext.Current.Pending();
+            var lowValue = await page.GetTextValuesLow();
+            StringAssert.Contains("1", lowValue);
+
+            var highValue = await page.GetTextValuesHigh();
+            StringAssert.Contains("20", highValue);
         }
 
         [Then(@"a Validation appears below Risk Rating Low input box that says ""(.*)""")]
-        public void ThenAValidationAppearsBelowRiskRatingLowInputBoxThatSays(string p0)
+        public async Task ThenAValidationAppearsBelowRiskRatingLowInputBoxThatSays(string p0)
         {
-            ScenarioContext.Current.Pending();
+           
+            string lowMsg = await page.LowRiskErrorMessage();
+            StringAssert.Contains(p0, lowMsg);
         }
 
         [Then(@"a Validation appears below Risk Rating High input box that says ""(.*)""")]
-        public void ThenAValidationAppearsBelowRiskRatingHighInputBoxThatSays(string p0)
+        public async Task ThenAValidationAppearsBelowRiskRatingHighInputBoxThatSays(string p0)
         {
-            ScenarioContext.Current.Pending();
+            string highMsg = await page.HighRiskErrorMessage();
+            StringAssert.Contains(p0, highMsg);
+            await page.ClickCredCodeCancel();
         }
 
         [Then(@"I click away")]
