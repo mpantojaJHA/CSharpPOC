@@ -44,24 +44,25 @@ Scenario: Verify Inline Validations on CECL Credit Rating Codes page
 	
 @CECLCreditRatingCodes
 Scenario: Verify Save and Cancel Appear when Navigate Away from CECL Credit Rating Codes page with Changes
-	Given I am on the Credit Rating Page
+	Given I have have at least one completed ETL and have navigated to Setup CECL
+	And I select the Setup CECL breadcrumb
+	And I choose Credit Rating Codes
+	And I am on the Credit Rating Page
 	When 3 is entered for Risk Rating Low
 	And 16 is entered for Risk Rating High
-	Then I click away
-	And I click the FPS Image
+	Then I click the FPS Image
 	Then a Save Change Dialog appears
 	When I click Save in the dialog 
-	Then the the ratings are Saved
-	And I am on the Credit Rating Page
-	When 1 is entered for Risk Rating Low
-	And 20 is entered for Risk Rating High
-	Then I click away
-	And I click the FPS Image 
+	Then the the dialog ratings are Saved
+	Then I stay on the Credit Rating Page
+	When 4 is entered for Risk Rating Low
+	And 77 is entered for Risk Rating High
+	Then I click the FPS Image 
 	Then a Save Change Dialog appears
 	When I click Cancel in the dialog 
-	Then the the ratings are Not Saved
 	Then am navigated to the Dashboard
-
+    When I have navigated to Setup CECL
+	Then the the ratings are Not Saved
 	
 
 	

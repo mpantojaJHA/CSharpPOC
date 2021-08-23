@@ -40,6 +40,7 @@ namespace CSharpPOC.Steps
         public async Task GivenISelectTheSetupCECLBreadcrumb()
         {
             await navigate.ClickBreadcrumb("text=Setup CECL");
+          
         }
 
         [Given(@"I choose Credit Rating Codes")]
@@ -122,51 +123,86 @@ namespace CSharpPOC.Steps
         {
            
             string lowMsg = await page.LowRiskErrorMessage();
-            StringAssert.Contains(p0, lowMsg);
+            //StringAssert.Contains(p0, lowMsg);
+            Assert.That(p0, Is.EqualTo(lowMsg.Trim()));
         }
 
         [Then(@"a Validation appears below Risk Rating High input box that says ""(.*)""")]
         public async Task ThenAValidationAppearsBelowRiskRatingHighInputBoxThatSays(string p0)
         {
             string highMsg = await page.HighRiskErrorMessage();
-            StringAssert.Contains(p0, highMsg);
+            //StringAssert.Contains(p0, highMsg.Trim());
+           Assert.That(p0, Is.EqualTo(highMsg.Trim()));
+
             await page.ClickCredCodeCancel();
         }
 
-        [Then(@"I click away")]
-        public void ThenIClickAway()
-        {
-            ScenarioContext.Current.Pending();
-        }
-
+      
         [Then(@"a Save Change Dialog appears")]
-        public void ThenASaveChangeDialogAppears()
+        public async Task ThenASaveChangeDialogAppears()
         {
-            ScenarioContext.Current.Pending();
+            string saveDialog = await page.VerifySaveDialog();
+            Assert.That(saveDialog.Trim(), Is.EqualTo("Save Changes"));
         }
 
         [When(@"I click Save in the dialog")]
-        public void WhenIClickSaveInTheDialog()
+        public async Task WhenIClickSaveInTheDialog()
         {
-            ScenarioContext.Current.Pending();
+
+            
+        await page.dialogSave();
+         
+        }
+        [Then(@"the the dialog ratings are Saved")]
+        public async Task ThenTheTheDialogRatingsAreSaved()
+        {
+            var lowValue = await page.GetTextValuesLow();
+            StringAssert.Contains("3", lowValue);
+
+            var highValue = await page.GetTextValuesHigh();
+            StringAssert.Contains("16", highValue);
         }
 
-        [Then(@"I am on the Credit Rating Page")]
-        public void ThenIAmOnTheCreditRatingPage()
+
+
+        [Then(@"I stay on the Credit Rating Page")]
+        public async Task ThenIAmOnTheCreditRatingPage()
         {
-            ScenarioContext.Current.Pending();
+            Assert.That(await navigate.DoesPageExist("Credit Rating Codes"), Contains.Substring("Credit Rating Codes"));
+
+            //set back to 1 low 20 high
+            await page.FillRiskRatingLow(defaultLow);
+            await page.FillRiskRatingHigh(defaultHigh);
+            await page.ClickCredCodeSave();
+
         }
 
         [When(@"I click Cancel in the dialog")]
-        public void WhenIClickCancelInTheDialog()
+        public async Task WhenIClickCancelInTheDialog()
         {
-            ScenarioContext.Current.Pending();
+            await page.dialogCancel();
         }
 
-        [Then(@"the the ratings are Not Saved")]
-        public void ThenTheTheRatingsAreNotFinallySaved()
+        [When(@"I have navigated to Setup CECL")]
+        public async Task WhenIHaveNavigatedToSetupCECL()
         {
-            ScenarioContext.Current.Pending();
+            await navigate.ClickSetup();
+            await navigate.ClickSetupCECL();
+            await navigate.ClickBreadcrumb("text=Setup CECL");
+            await navigate.ClickBreadCrumbSubmenu("text=Credit Rating Codes");
+
+        }
+
+
+
+        [Then(@"the the ratings are Not Saved")]
+        public async Task ThenTheTheRatingsAreNotFinallySaved()
+        {
+            var lowValue = await page.GetTextValuesLow();
+            StringAssert.Contains("1", lowValue);
+
+            var highValue = await page.GetTextValuesHigh();
+            StringAssert.Contains("20", highValue);
         }
     }
 }

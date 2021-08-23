@@ -27,7 +27,7 @@ namespace CSharpPOC.Hooks
             BrowserTypeLaunchOptions launchOptions = new BrowserTypeLaunchOptions()
             {
                 Headless = false,
-                SlowMo = 1000,
+                SlowMo = 500,
                
                
             };
