@@ -48,7 +48,7 @@ namespace CSharpPOC.Steps
         {
             await navigate.ClickBreadCrumbSubmenu("text=Credit Rating Codes");
         }
-
+        
         [Given(@"I am on the Credit Rating Page")]
         public async Task GivenIAmOnTheCreditRatingPage()
         {

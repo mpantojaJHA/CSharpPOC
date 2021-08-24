@@ -37,6 +37,7 @@ namespace CSharpPOC.Pages
         string txtInstNameDropDn => "text=Ovation Bank";
        string txtAbout => "text=About";
        string txtCreditRatingCodes => "text=Credit Rating Codes";
+        string txtCECLModelSelection => "text=Model Selection";
 
         //Methods
 
@@ -81,6 +82,8 @@ namespace CSharpPOC.Pages
                     return await Page.TextContentAsync(txtAbout);
                 case "Credit Rating Codes":
                     return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtCreditRatingCodes).Result.InnerTextAsync();
+                case "Model Selection":
+                    return await Page.Frame("FpsAngularAppFrame").QuerySelectorAsync(txtCECLModelSelection).Result.InnerTextAsync();
                 default:
                     return await Page.TextContentAsync("No Domain found");
             }
