@@ -20,22 +20,22 @@ namespace CSharpPOC.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("VerfiyAboutPg")]
-    public partial class VerfiyAboutPgFeature
+    [NUnit.Framework.DescriptionAttribute("NavigateSimplified")]
+    public partial class NavigateSimplifiedFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "VerfiyAboutPg.feature"
+#line 1 "NavigateSimplified.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "VerfiyAboutPg", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "NavigateSimplified", "\tNavigate to Main pages in app", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,14 +80,14 @@ namespace CSharpPOC.Features
 #line 5
    testRunner.Given("I navigate to the environment FPS application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Username",
                         "Password"});
-            table10.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "mpantoja",
                         "Kiara$$$"});
 #line 6
- testRunner.And("And I enter Username and Password", ((string)(null)), table10, "And ");
+ testRunner.And("And I enter Username and Password", ((string)(null)), table2, "And ");
 #line hidden
 #line 9
  testRunner.When("I click Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -98,15 +98,13 @@ namespace CSharpPOC.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify About Page")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void VerifyAboutPage()
+        [NUnit.Framework.DescriptionAttribute("I can navigate to main menu pages")]
+        public virtual void ICanNavigateToMainMenuPages()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify About Page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 15
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can navigate to main menu pages", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 12
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -129,35 +127,80 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line hidden
-#line 16
+#line 13
  testRunner.Given("I am on the Dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 17
- testRunner.And("I click the Institution Name Drop Down", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "AppPage",
+                            "on_Page"});
+                table3.AddRow(new string[] {
+                            "Profitablity",
+                            "PROFITABILITY"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+                table3.AddRow(new string[] {
+                            "Pricing",
+                            "Pricing"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+                table3.AddRow(new string[] {
+                            "Forecasting Detail",
+                            "Forecasting Detail"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+                table3.AddRow(new string[] {
+                            "ALMEVE",
+                            "EVE"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+                table3.AddRow(new string[] {
+                            "CECL",
+                            "CECL Summary"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+                table3.AddRow(new string[] {
+                            "Scorecard",
+                            "Scorecard"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+                table3.AddRow(new string[] {
+                            "Reporting",
+                            "Create Reports"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+                table3.AddRow(new string[] {
+                            "Update",
+                            "Monthly Update Process"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+                table3.AddRow(new string[] {
+                            "Manage Users",
+                            "Manage Users"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+                table3.AddRow(new string[] {
+                            "Setup CECL",
+                            "Setup CECL"});
+                table3.AddRow(new string[] {
+                            "Dashboard",
+                            "Dashboard"});
+#line 14
+ testRunner.And("I can navigate to AppPage and am on_Page", ((string)(null)), table3, "And ");
 #line hidden
-#line 18
- testRunner.When("I click the About link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 36
+ testRunner.When("I log out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 19
- testRunner.Then("I am navigated to the About page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 20
- testRunner.And("I verify the Application Name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 21
- testRunner.And("I verify a copyright Date exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 22
- testRunner.And("I verify a build number exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 23
- testRunner.And("I verify a Tradmark Notice link exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 24
- testRunner.And("I verify a Terms and Conditions link exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 25
- testRunner.And("I verify a Privacy Policy link exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 37
+ testRunner.Then("I will be logged out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

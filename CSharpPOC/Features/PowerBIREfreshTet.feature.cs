@@ -80,14 +80,14 @@ namespace CSharpPOC.Features
 #line 5
    testRunner.Given("I navigate to the environment FPS application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Username",
                         "Password"});
-            table2.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "mpantoja",
                         "Kiara###"});
 #line 6
- testRunner.And("And I enter Username and Password", ((string)(null)), table2, "And ");
+ testRunner.And("And I enter Username and Password", ((string)(null)), table4, "And ");
 #line hidden
 #line 10
  testRunner.When("I click Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

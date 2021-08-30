@@ -40,45 +40,80 @@ namespace CSharpPOC.Steps
         }
 
         [When(@"I click the Calendar Control icon")]
-        public void WhenIClickTheCalendarControlIcon()
+        public async Task WhenIClickTheCalendarControlIcon()
         {
-            ScenarioContext.Current.Pending();
+            await page.ClickCalendarIcon();
         }
 
         [Then(@"the Calendar drops down")]
-        public void ThenTheCalendarDropsDown()
+        public async Task ThenTheCalendarDropsDown()
         {
-            ScenarioContext.Current.Pending();
+            Assert.That(await page.DoesCalendarExist(), Is.True);
         }
 
         [Then(@"the Current year of recent ETLs shows for Year")]
-        public void ThenTheCurrentYearOfRecentETLsShowsForYear()
+        public async Task ThenTheCurrentYearOfRecentETLsShowsForYear()
         {
-            ScenarioContext.Current.Pending();
-        }
+
+            //check setup Month Update, last processed month save value, massage string to month year
+            //go back to CECL Model Selection, click date picker, see if the value is on picker and then click
+            
+            await navigate.ClickSetup();
+            await navigate.ClickUpdate();
+            await navigate.ClickMonthyUpdate();            
+            string curYearETL = await page.GetCurrentYearETL();
+            string curMonthETL = await page.GetCurrentMonthETL();
+            //back to CECL Model Selection
+            await navigate.ClickSetup();
+            await navigate.ClickSetupCECL();
+            await navigate.ClickBreadcrumb("text=Setup CECL");
+            await navigate.ClickBreadCrumbSubmenu("text = Model Selection");
+            //
+            await page.ClickCalendarIcon();
+            string calendarYear =await page.GetCalendarYear();
+            string calendarMonth = await page.GetCalendarMonth();
+            
+            Assert.AreEqual(calendarYear.Trim(), curYearETL);
+            Assert.AreEqual(calendarMonth.Trim(), curMonthETL);
+           
+
+
+
+         }
 
         [Then(@"Only Months with Completed ETLs can be selected")]
-        public void ThenOnlyMonthsWithCompletedETLsCanBeSelected()
+        public async Task ThenOnlyMonthsWithCompletedETLsCanBeSelected()
         {
-            ScenarioContext.Current.Pending();
+            // click the latest ETL'd month as the test'ScenarioContext.Current.Pending();
+        //    await navigate.ClickSetup();
+        //    await navigate.ClickUpdate();
+        //    string curMonETL = await page.GetCurrentMonthETL();
+        //    await navigate.ClickSetup();
+        //    await navigate.ClickSetupCECL();
+        //    await navigate.ClickBreadcrumb("text=Setup CECL");
+        //    await navigate.ClickBreadCrumbSubmenu("text = Model Selection");
+        //    //
+        //    Assert.AreEqual("Feb", curMonETL);
         }
 
         [Then(@"I cannot select a month beyond or prior to the ETLd months")]
-        public void ThenICannotSelectAMonthBeyondOrPriorToTheETLdMonths()
+        public async Task ThenICannotSelectAMonthBeyondOrPriorToTheETLdMonths()
         {
-            ScenarioContext.Current.Pending();
+            //ScenarioContext.Current.Pending();
         }
 
         [When(@"I click outside of the dropped down calendar")]
-        public void WhenIClickOutsideOfTheDroppedDownCalendar()
+        public async Task  WhenIClickOutsideOfTheDroppedDownCalendar()
         {
-            ScenarioContext.Current.Pending();
+            //await page.ClickCalendarIcon();
         }
 
         [Then(@"the Calendar collapses up")]
-        public void ThenTheCalendarCollapsesUp()
+        public async Task ThenTheCalendarCollapsesUp()
         {
-            ScenarioContext.Current.Pending();
+            
+            Assert.That(await page.DoesCalendarExist(), Is.False);
+
         }
 
         [When(@"I select the first drop down on the Category-Primary Model Grid")]

@@ -41,6 +41,61 @@ namespace CSharpPOC.Pages
 
         //Methods
 
+        public async Task NavToPage(string nvPg)
+        {
+            var txtNav = nvPg.Trim();
+
+            if (txtNav == "Profitablity")
+            {
+                await ClickProfitability();
+            }
+            else if (txtNav == "Pricing")
+            {
+                await ClickPricing();
+                await ClickPricingSubmenu();
+            }
+            else if (txtNav == "Dashboard")
+            { await NavToDashboard(); }
+            else if (txtNav == "Forecasting Detail")
+            {
+                await ClickForecasting();
+                await ClickForecatingDetail();
+            }
+            else if (txtNav == "ALMEVE"){
+                await ClickALM();
+                await ClickEVE();
+            }
+            else if (txtNav == "CECL")
+            {
+                await ClickCECL();
+            }
+            else if (txtNav == "Scorecard")
+            {
+                await ClickScorecard();
+            }
+            else if (txtNav == "Reporting")
+            {
+                await ClickReporting();
+                await ClickCreateReports();
+            }
+            else if (txtNav == "Update")
+            {
+                await ClickUpdate();
+                await ClickMonthyUpdate();
+            }
+            else if (txtNav == "Manage Users")
+            {
+                await ClickSetup();
+                await ClickManageUsers();
+            }
+            else if (txtNav == "Setup CECL")
+            {
+                await ClickSetup();
+                await ClickSetupCECL();
+            }
+            
+  
+        }
         public async Task<string> DoesDashbardExist()
         {
 
@@ -51,31 +106,36 @@ namespace CSharpPOC.Pages
         public async Task<string> DoesPageExist(string txtPage)
         {
            var txtDomainPage = txtPage;
-
+            
             
             switch (txtDomainPage)
             {
-                case "Profitability":
-                    return await Page.QuerySelectorAsync(txtProfitability).Result.InnerTextAsync();
-                  ;
+                case "Dashboard":       
+                    return await Page.QuerySelectorAsync(txtDashboard).Result.InnerTextAsync();
+
+                case "PROFITABILITY":
+                    
+                    return await Page.QuerySelectorAsync(txtProfitability).Result.InnerTextAsync(); 
+                 
                 case "Pricing":
-                    return await Page.TextContentAsync("span:has-text('Pricing')");
-                case "Forecasting":
+                    
+                    return  await Page.TextContentAsync("span:has-text('Pricing')");
+                case "Forecasting Detail":
                     return await Page.TextContentAsync("text=Forecasting Detail");
-                case "ALM":
+                case "EVE":
                     return await Page.TextContentAsync(txtEVE);
-                case "CECL":
+                case "CECL Summary":
                     return await Page.TextContentAsync("text=CECL Summary");
                 case "Scorecard":
                     return await Page.TextContentAsync("span:has-text('Scorecard')");
-                case "Reporting":
+                case "Create Reports":
                     return await Page.TextContentAsync(txtCreateReports);
-                case "Update":
+                case "Monthly Update Process":
                     return await Page.TextContentAsync(txtMonthlyUpdate);
 
-                case "MgUsers":
+                case "Manage Users":
                     return await Page.TextContentAsync(txtManageUsers);
-                case "SetupCECL":
+                case "Setup CECL":
                     return await Page.Frame(name: "FpsAngularAppFrame").QuerySelectorAsync(txtBrdCrmbSetupCECL).Result.InnerTextAsync();
 
                 case "About":
@@ -88,8 +148,7 @@ namespace CSharpPOC.Pages
                     return await Page.TextContentAsync("No Domain found");
             }
 
-
-
+  
         }
         public async Task NavToDashboard() => await Page.ClickAsync(imgDashboard);
 
