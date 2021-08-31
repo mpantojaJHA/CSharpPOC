@@ -24,8 +24,7 @@ namespace CSharpPOC.Steps
         [Given(@"I am on the Dashboard")]
         public async Task GivenIAmOnTheDashboard()
         {
-            //var content = await navigate.DoesDashbardExist();
-            // Assert.AreEqual("Dashboard",content);
+            
             Assert.That(await navigate.DoesDashbardExist(), Is.EqualTo(" Dashboard"));
             
 
@@ -42,7 +41,7 @@ namespace CSharpPOC.Steps
         [Then(@"I am navigated to the Profitability page")]
         public async Task ThenIAmNavigatedToTheProfitabilityPage()
         {
-            Assert.That(await navigate.DoesPageExist("Profitability"), Is.EqualTo("PROFITABILITY"));
+            Assert.That(await navigate.DoesPageExist("PROFITABILITY"), Is.EqualTo("PROFITABILITY"));
             
         }
 
@@ -92,7 +91,7 @@ namespace CSharpPOC.Steps
         [Then(@"I am navigated to the Forecasting Detail Page")]
         public async Task ThenIAmNavigatedToTheForecastingDetailPage()
         {
-            Assert.That(await navigate.DoesPageExist("Forecasting"), Is.EqualTo("Forecasting Detail"));
+            Assert.That(await navigate.DoesPageExist("Forecasting Detail"), Is.EqualTo("Forecasting Detail"));
         }
 
         [Then(@"I click ALM")]
@@ -111,7 +110,7 @@ namespace CSharpPOC.Steps
         [Then(@"I am navigated to the EVE Page")]
         public async Task ThenIAmNavigatedToTheEVEPage()
         {
-            Assert.That(await navigate.DoesPageExist("ALM"), Is.EqualTo("EVE"));
+            Assert.That(await navigate.DoesPageExist("EVE"), Is.EqualTo("EVE"));
         }
 
         [Then(@"I click CECL")]
@@ -123,7 +122,7 @@ namespace CSharpPOC.Steps
         [Then(@"I am navigated to the CECL Summary Page")]
         public async Task ThenIAmNavigatedToTheCECLSummaryPage()
         {
-            Assert.That(await navigate.DoesPageExist("CECL"), Is.EqualTo("CECL Summary"));
+            Assert.That(await navigate.DoesPageExist("CECL Summary"), Is.EqualTo("CECL Summary"));
         }
 
         [Then(@"I click Scorecard")]
@@ -153,7 +152,7 @@ namespace CSharpPOC.Steps
         [Then(@"I am navigated to the Create Reports Page")]
         public async Task ThenIAmNavigatedToTheCreateReportsPage()
         {
-            Assert.That(await navigate.DoesPageExist("Reporting"), Is.EqualTo("Create Reports"));
+            Assert.That(await navigate.DoesPageExist("Create Reports"), Is.EqualTo("Create Reports"));
         }
             [Then(@"I click Update")]
         public async Task ThenIClickUpdate()
@@ -171,7 +170,7 @@ namespace CSharpPOC.Steps
         public async Task ThenIAmNavigatedToTheMonthlyUpdatePage()
         {
             
-            Assert.That(await navigate.DoesPageExist("Update"), Is.EqualTo("Monthly Update Process"));
+            Assert.That(await navigate.DoesPageExist("Monthly Update Process"), Is.EqualTo("Monthly Update Process"));
         }
 
          [Then(@"I click Setup")]
@@ -189,7 +188,7 @@ namespace CSharpPOC.Steps
         [Then(@"I am navigated to the Manage Users Page")]
         public async Task ThenIAmNavigatedToTheManageUsersPage()
         {
-            Assert.That(await navigate.DoesPageExist("MgUsers"), Is.EqualTo("Manage Users"));
+            Assert.That(await navigate.DoesPageExist("Manage Users"), Is.EqualTo("Manage Users"));
         }
 
         [When(@"I click submenu CECL")]
@@ -203,7 +202,7 @@ namespace CSharpPOC.Steps
         public async Task ThenIAmNavigatedToSetupCECL()
         {
                    
-           Assert.That(await navigate.DoesPageExist("SetupCECL"), Is.EqualTo("Setup CECL "));
+           Assert.That(await navigate.DoesPageExist("Setup CECL"), Is.EqualTo("Setup CECL "));
         }
 
 
